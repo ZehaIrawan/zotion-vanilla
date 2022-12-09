@@ -95,3 +95,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+/* New */
+*{
+ color: #fff;
+}
+
+[contenteditable]:empty:after {
+    content: attr(placeholder);
+}
