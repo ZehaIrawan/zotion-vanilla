@@ -98,6 +98,8 @@ button:focus-visible {
 /* New */
 *{
  color: #fff;
+ outline: none;
+ text-align: left;
 }
 
 [contenteditable]:empty:after {
