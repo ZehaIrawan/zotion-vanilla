@@ -1,5 +1,7 @@
 
-export function commandsMenu() {
+export function commandsMenu(query) {
+
+  console.log(query,"this is qyert");
 
   const handleClick = () => {
     console.log("clicked");
@@ -21,7 +23,7 @@ export function commandsMenu() {
     <h4>Add blocks</h4>
     <span>Keep typing to filter, or escape to exit</span>
     <br/>
-    <span>Filtering keyword 1</span>
+    <span>Filtering keyword ${query}</span>
     <br/>
 
     <div id="h1-command">
