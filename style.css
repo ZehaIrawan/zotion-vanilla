@@ -131,3 +131,11 @@ div{
 .show-commands{
   display: block;
 }
+
+.relative{
+  position: relative;
+}
+
+.absolute{
+  position: absolute;
+}

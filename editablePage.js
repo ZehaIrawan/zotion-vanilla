@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { commandsMenu } from "./commandsMenu";
 
 export function editablePage() {
   let defaultBlocks = [
@@ -10,9 +11,8 @@ export function editablePage() {
     },
   ];
 
-  const commandsMenu = document.getElementById("commandsMenu");
 
-  const  changeTag = (node, tag) => {
+  const changeTag = (node, tag) => {
     const clone = document.createElement(tag);
     for (const attr of node.attributes) {
       clone.setAttributeNS(null, attr.name, attr.value);
@@ -22,8 +22,7 @@ export function editablePage() {
     }
     node.replaceWith(clone);
     return clone;
-  }
-
+  };
 
   const keydownHandler = (e, id) => {
     console.log(`${e.key} pressed ${id}`);
@@ -32,10 +31,18 @@ export function editablePage() {
       handleCreateBlock();
     }
     if (e.key === "/") {
-      if (commandsMenu.classList.contains("hide-commands")) {
-        commandsMenu.classList.remove("hide-commands");
-        commandsMenu.classList.add("show-commands");
-      }
+      const currentElement = document.getElementById("editablePage");
+      // currentElement.setAttribute("class","absolute")
+      const commandsContainer = document.createElement("div");
+      commandsContainer.setAttribute("id","commandsMenu")
+      commandsContainer.setAttribute("class","relative")
+      currentElement.appendChild(commandsContainer);
+      // if (commandsMenu.classList.contains("hide-commands")) {
+      //   commandsMenu.classList.remove("hide-commands");
+      //   commandsMenu.classList.add("show-commands");
+      // }
+      commandsMenu();
+      // <div id="commandsMenu" class="hide-commands" />;
     }
     if (e.key === "ArrowUp") {
       console.log(
@@ -58,8 +65,9 @@ export function editablePage() {
     }
 
     if (e.key === "1") {
-      const currentElement = document.getElementById(document.activeElement.id)
-      changeTag(currentElement,"h1")
+      const currentElement = document.getElementById(document.activeElement.id);
+
+      changeTag(currentElement, "h1");
     }
     // arrow up => move to previous block
     // arrow down => move to next block
