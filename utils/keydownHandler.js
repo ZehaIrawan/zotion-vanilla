@@ -1,15 +1,16 @@
 import { commandsMenu } from "../commandsMenu";
+import {handleCreateBlock} from './handleCreateBlock'
 
-export const keydownHandler = (e, id) => {
-  let prevKey = "";
+export const keydownHandler = (e, id,state) => {
 
-  console.log(`${e.key} pressed ${id}`);
-  if (prevKey === "/") {
+  if (state.prevKey === "/") {
+
+
     const currentElement = document.getElementById(document.activeElement.id);
     // currentElement.addEventListener("DOMSubtreeModified", handleChange);
     // console.log(currentElement,'TXT');
 
-    console.log(currentElement.childNodes[0]);
+    // console.log(currentElement.childNodes[0]);
 
     const config = {
       characterData: true,
@@ -18,6 +19,7 @@ export const keydownHandler = (e, id) => {
     // Callback function to execute when mutations are observed
     const callback = (mutationList, observer) => {
       for (const mutation of mutationList) {
+        console.log('mutation');
         commandsMenu(mutation.target.data.replace(/\//g, ""));
       }
     };
@@ -31,10 +33,11 @@ export const keydownHandler = (e, id) => {
 
   if (e.key === "Enter") {
     e.preventDefault();
-    handleCreateBlock();
+    handleCreateBlock(state);
   }
   if (e.key === "/") {
-    prevKey = "/";
+    state.prevKey = "/";
+    // console.log(prevKey, "prev2");
     const editablePage = document.getElementById("editablePage");
     const commandsContainer = document.createElement("div");
     commandsContainer.setAttribute("id", "commandsMenu");

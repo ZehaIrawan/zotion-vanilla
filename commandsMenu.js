@@ -1,6 +1,9 @@
 import {keydownHandler} from './utils/keydownHandler'
 
 export function commandsMenu(query) {
+
+  // console.log(query,'query');
+
   const changeTag = (node, tag) => {
     const clone = document.createElement(tag);
     clone.addEventListener("keydown", keydownHandler);
