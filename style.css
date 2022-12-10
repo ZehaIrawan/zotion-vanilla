@@ -139,3 +139,15 @@ div{
 .absolute{
   position: absolute;
 }
+
+.command{
+  padding: 4px 12px;
+}
+
+.command:hover{
+  background-color: lightgray;
+}
+
+.command span{
+  display: block;
+}
