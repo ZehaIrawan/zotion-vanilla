@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
 
-
 export function editablePage() {
   let defaultBlocks = [
     { tag: "h1", text: "Untitled", id: uuidv4() },
@@ -11,22 +10,63 @@ export function editablePage() {
     },
   ];
 
-  const keydownHandler = (e) => {
-    console.log(`${e.key} pressed`)
+  const commandsMenu = document.getElementById("commandsMenu");
+
+  const  changeTag = (node, tag) => {
+    const clone = document.createElement(tag);
+    for (const attr of node.attributes) {
+      clone.setAttributeNS(null, attr.name, attr.value);
+    }
+    while (node.firstChild) {
+      clone.appendChild(node.firstChild);
+    }
+    node.replaceWith(clone);
+    return clone;
+  }
+
+
+  const keydownHandler = (e, id) => {
+    console.log(`${e.key} pressed ${id}`);
     if (e.key === "Enter") {
       e.preventDefault();
       handleCreateBlock();
     }
     if (e.key === "/") {
-      alert('show command')
+      if (commandsMenu.classList.contains("hide-commands")) {
+        commandsMenu.classList.remove("hide-commands");
+        commandsMenu.classList.add("show-commands");
+      }
+    }
+    if (e.key === "ArrowUp") {
+      console.log(
+        defaultBlocks.indexOf(
+          defaultBlocks.filter((block) => block.id === id)[0],
+        ),
+      );
+    }
+    if (e.key === "ArrowDown") {
+      console.log(document.activeElement.id);
+    }
+
+    if (e.key === "Backspace") {
+      //  close command
+      if (commandsMenu.classList.contains("show-commands")) {
+        commandsMenu.classList.remove("show-commands");
+        commandsMenu.classList.add("hide-commands");
+      }
+      // delete current block
+    }
+
+    if (e.key === "1") {
+      const currentElement = document.getElementById(document.activeElement.id)
+      changeTag(currentElement,"h1")
     }
     // arrow up => move to previous block
     // arrow down => move to next block
-    // backspace => delete block
-  }
+  };
 
   const handleCreateBlock = () => {
-    console.log('create new block')
+    console.log("create new block");
     defaultBlocks.push({
       tag: "div",
       text: "Type &#47 for commands",
@@ -34,23 +74,24 @@ export function editablePage() {
     });
 
     const lastBlock = defaultBlocks[defaultBlocks.length - 1];
-     const node = document.createElement(lastBlock.tag);
-     node.setAttribute("id", lastBlock.id);
-     node.addEventListener("keydown", keydownHandler);
-     node.setAttribute("contentEditable", "true");
-     node.setAttribute("placeholder", lastBlock.text);
-     document.getElementById("editablePage").appendChild(node);
-     node.focus()
-  }
 
-  defaultBlocks.map(block => {
+    const node = document.createElement(lastBlock.tag);
+    node.setAttribute("id", lastBlock.id);
+    node.addEventListener("keydown", (e) => {
+      keydownHandler(e, lastBlock.id);
+    });
+    node.setAttribute("contentEditable", "true");
+    node.setAttribute("placeholder", lastBlock.text);
+    document.getElementById("editablePage").appendChild(node);
+    node.focus();
+  };
+
+  defaultBlocks.map((block) => {
     const node = document.createElement(block.tag);
     node.setAttribute("id", block.id);
     node.addEventListener("keydown", keydownHandler);
     node.setAttribute("contentEditable", "true");
     node.setAttribute("placeholder", block.text);
     document.getElementById("editablePage").appendChild(node);
-  })
-
-
+  });
 }

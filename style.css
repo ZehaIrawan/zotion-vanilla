@@ -26,10 +26,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -38,8 +34,8 @@ h1 {
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
   padding: 2rem;
   text-align: center;
 }
@@ -96,12 +92,42 @@ button:focus-visible {
   }
 }
 /* New */
-*{
+
+
+div, h1{
  color: #fff;
  outline: none;
  text-align: left;
 }
 
+div{
+  padding:4px 0px;
+}
+
 [contenteditable]:empty:after {
     content: attr(placeholder);
+}
+
+
+.commands-container{
+  background-color: white;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  width: 320px;
+  height: auto;
+}
+
+.commands-container > * {
+  color: #1a1a1a;
+}
+
+.hide-commands{
+  display: none;
+}
+
+.show-commands{
+  display: block;
 }
