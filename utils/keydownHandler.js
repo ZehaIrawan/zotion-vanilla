@@ -7,11 +7,6 @@ export const keydownHandler = (e, id, state) => {
   let observer;
 
   if (state && state.prevKey === "/") {
-    const currentElement = document.getElementById(document.activeElement.id);
-    // currentElement.addEventListener("DOMSubtreeModified", handleChange);
-    // console.log(currentElement,'TXT');
-
-    // console.log(currentElement.childNodes[0]);
 
     const config = {
       characterData: true,
@@ -20,7 +15,6 @@ export const keydownHandler = (e, id, state) => {
     // Callback function to execute when mutations are observed
     const callback = (mutationList, observer) => {
       for (const mutation of mutationList) {
-        // console.log('mutation');
         commandsMenu(mutation.target.data.replace(/\//g, ""), state);
       }
     };
@@ -45,7 +39,6 @@ export const keydownHandler = (e, id, state) => {
   }
   if (e.key === "/") {
     state.prevKey = "/";
-    // console.log(prevKey, "prev2");
     const editablePage = document.getElementById("editablePage");
     const commandsContainer = document.createElement("div");
     commandsContainer.setAttribute("id", "commandsMenu");
@@ -72,6 +65,12 @@ export const keydownHandler = (e, id, state) => {
     //   commandsMenu.classList.add("hide-commands");
     // }
     // delete current block
+  }
+  if(e.key === "Escape"){
+     if (state && state.prevKey === "/") {
+       const menu = document.getElementById("commandsMenu");
+       menu.parentNode.removeChild(menu);
+    }
   }
 
   // arrow up => move to previous block

@@ -146,6 +146,7 @@ div{
 
 .command{
   padding: 4px 12px;
+  cursor: pointer;
 }
 
 .command:hover, .selected-command{
@@ -231,3 +232,9 @@ nav{
   height: 24px;
 }
 
+.query{
+  background-color: #3565A9;
+  color:#fff;
+  padding: 6px 8px;
+  border-radius: 4px;
+}

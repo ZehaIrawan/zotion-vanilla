@@ -5,14 +5,12 @@ export const handleCreateBlock = (state) => {
 
   if(state){
   const handleFocus = () => {
-    console.log("focus");
     const currentElement = document.getElementById(document.activeElement.id);
     currentElement.setAttribute("placeholder", "Type '/' for commands");
   };
 
  state.defaultBlocks.push({
     tag: "div",
-    // text: "Type '/' for commands",
     id: uuidv4(),
   });
 

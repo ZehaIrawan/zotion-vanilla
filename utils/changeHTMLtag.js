@@ -1,14 +1,12 @@
 import { keydownHandler } from "./keydownHandler";
 
 export const changeHTMLTag = (node, element, state) => {
-
   const clone = document.createElement(element.tag);
 
   for (const attr of node.attributes) {
     clone.setAttributeNS(null, attr.name, attr.value);
-    // clone.setAttributeNS(null, attr.name, attr.value);
   }
-  // no way to set event listener
+
   while (node.firstChild) {
     clone.appendChild(node.firstChild);
   }
