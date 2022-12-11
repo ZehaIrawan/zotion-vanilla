@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm i -dev && vite build",
     "preview": "vite preview",
-    "heroku-postbuild": "npm i -dev  && npm build",
+    "heroku-postbuild": "npm build",
     "start": "vite --port $PORT"
   },
   "devDependencies": {
