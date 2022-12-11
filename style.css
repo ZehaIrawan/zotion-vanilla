@@ -19,11 +19,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  /* color: #646cff; */
+  color: gray;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: gray;
 }
 
 body {
@@ -36,22 +37,13 @@ h1 {
 }
 
 #app {
-  /* max-width: 1280px; */
-  /* margin: 0 auto; */
   padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+.content{
+    max-width: 900px;
+  margin: 0 auto;
 }
 
 .card {
@@ -114,6 +106,7 @@ div{
 
 [contenteditable]:empty:after {
     content: attr(placeholder);
+    color: lightgray;
 }
 
 
@@ -196,4 +189,44 @@ nav{
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+/* decoration */
+.decoration{
+  margin-top: 2rem;
+  border: 1px solid lightgray;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.decoration div{
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  display: block;
+  background-color:  lightgray;
+  margin:0 12px;
+  width: 2px;
+  border-radius: 2px;
+  height:20px;
+}
+
+.initials{
+  background-color: #D9F9E6;
+  color: #347659;
+  font-weight: 600;
+  display: inline;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.rabbit{
+  width: 24px;
+  height: 24px;
 }
