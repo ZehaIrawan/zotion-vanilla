@@ -9,36 +9,17 @@ export function editablePage() {
       {
         tag: "div",
         text: "Press Enter to continue with an empty page, or pick a template (↑↓ to select)",
-        id: uuidv4(),
+        id:"empty-state",
       },
     ],
     filteredCommands: [],
     selectedCommand:''
   };
 
-    // commandsMenu.state = {
-    //   filteredCommands: query
-    //     ? commandList.filter((item) => item.tag.includes(query))
-    //     : commandList,
-    // };
-
-    // commandsMenu.selectedState = {
-    //   command: commandsMenu.state.filteredCommands[0],
-    // };
-
-  // const handleBlur = (e) => {
-  //    const currentElement = document.getElementById(document.activeElement.id);
-  //    currentElement.
-  //    removeAttribute("placeholder");
-  //   console.log(e);
-  // }
-
-  //  let prevKey = "";
 
   editablePage.state.defaultBlocks.map((block) => {
     const node = document.createElement(block.tag);
     node.setAttribute("id", block.id);
-    // node.addEventListener("keydown", keydownHandler);
     node.addEventListener("keydown", (e) => {
       keydownHandler(e, block.id, editablePage.state);
     });
