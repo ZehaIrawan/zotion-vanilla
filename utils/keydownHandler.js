@@ -1,13 +1,13 @@
 import { commandsMenu } from "../component/commandsMenu";
 import { handleCreateBlock } from "./handleCreateBlock";
 import { changeHTMLTag } from "./changeHTMLtag";
+import { commandList } from "../utils/commandList";
 
 export const keydownHandler = (e, id, state) => {
   const currentElement = document.getElementById(document.activeElement.id);
   let observer;
 
   if (state && state.prevKey === "/") {
-
     const config = {
       characterData: true,
     };
@@ -62,10 +62,26 @@ export const keydownHandler = (e, id, state) => {
     //  close command
     // delete current block
   }
-  if(e.key === "Escape"){
-     if (state && state.prevKey === "/") {
-       const menu = document.getElementById("commandsMenu");
-       menu.parentNode.removeChild(menu);
+  if (e.key === "Escape") {
+    if (state && state.prevKey === "/") {
+      const menu = document.getElementById("commandsMenu");
+      menu.parentNode.removeChild(menu);
+    }
+  }
+
+  if (e.key === "#") {
+    state.prevKey = "#";
+  }
+
+  if (e.key == " " || e.code == "Space" || e.keyCode == 32) {
+    if (state && state.prevKey === "#") {
+
+      changeHTMLTag(
+        currentElement,
+        commandList.filter((item) => item.id == "heading1")[0],
+        state,
+      );
+      state.prevKey = "";
     }
   }
 

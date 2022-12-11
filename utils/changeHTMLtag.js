@@ -1,6 +1,7 @@
 import { keydownHandler } from "./keydownHandler";
 
 export const changeHTMLTag = (node, element, state) => {
+
   const clone = document.createElement(element.tag);
 
   for (const attr of node.attributes) {
@@ -13,6 +14,7 @@ export const changeHTMLTag = (node, element, state) => {
 
   clone.innerHTML = "";
   clone.setAttribute("placeholder", element.label);
+
   clone.addEventListener("keydown", keydownHandler);
   clone.addEventListener("keydown", (e) => {
     keydownHandler(e, clone.id, state);
@@ -20,7 +22,9 @@ export const changeHTMLTag = (node, element, state) => {
 
   node.replaceWith(clone);
   const menu = document.getElementById("commandsMenu");
-  menu.parentNode.removeChild(menu);
+  if(menu){
+    menu.parentNode.removeChild(menu);
+  }
   clone.focus();
   return clone;
 };
