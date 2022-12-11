@@ -40,7 +40,7 @@ export function editablePage() {
     node.setAttribute("id", block.id);
     // node.addEventListener("keydown", keydownHandler);
     node.addEventListener("keydown", (e) => {
-      keydownHandler(e, "123e-asdas", editablePage.state);
+      keydownHandler(e, block.id, editablePage.state);
     });
 
     node.setAttribute("contentEditable", "true");

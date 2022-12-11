@@ -1,14 +1,12 @@
 import { commandsMenu } from "../commandsMenu";
-import {handleCreateBlock} from './handleCreateBlock'
-import {changeHTMLTag} from './changeHTMLtag'
+import { handleCreateBlock } from "./handleCreateBlock";
+import { changeHTMLTag } from "./changeHTMLtag";
 
-export const keydownHandler = (e, id,state) => {
+export const keydownHandler = (e, id, state) => {
+  const currentElement = document.getElementById(document.activeElement.id);
+  let observer;
 
-    const currentElement = document.getElementById(document.activeElement.id);
-
-  if (state.prevKey === "/") {
-
-
+  if (state && state.prevKey === "/") {
     const currentElement = document.getElementById(document.activeElement.id);
     // currentElement.addEventListener("DOMSubtreeModified", handleChange);
     // console.log(currentElement,'TXT');
@@ -28,7 +26,7 @@ export const keydownHandler = (e, id,state) => {
     };
 
     // Create an observer instance linked to the callback function
-    const observer = new MutationObserver(callback);
+    observer = new MutationObserver(callback);
 
     // Start observing the target node for configured mutations
     observer.observe(currentElement.childNodes[0], config);
@@ -36,9 +34,11 @@ export const keydownHandler = (e, id,state) => {
 
   if (e.key === "Enter") {
     e.preventDefault();
-    if( state.prevKey === "/"){
-      changeHTMLTag(currentElement,state.selectedCommand)
-    }else{
+    if (state && state.prevKey === "/") {
+      state.prevKey = "";
+      changeHTMLTag(currentElement, state.selectedCommand, state);
+      observer.disconnect();
+    } else {
       handleCreateBlock(state);
     }
   }
@@ -51,7 +51,7 @@ export const keydownHandler = (e, id,state) => {
     commandsContainer.setAttribute("class", "relative");
     editablePage.appendChild(commandsContainer);
 
-    commandsMenu(null,state);
+    commandsMenu(null, state);
   }
   if (e.key === "ArrowUp") {
     console.log(

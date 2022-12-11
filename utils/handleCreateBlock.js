@@ -4,13 +4,14 @@ import { keydownHandler } from "./keydownHandler";
 export const handleCreateBlock = (state) => {
   console.log("create new block");
 
+  if(state){
   const handleFocus = () => {
     console.log("focus");
     const currentElement = document.getElementById(document.activeElement.id);
     currentElement.setAttribute("placeholder", "Type '/' for commands");
   };
 
-  state.defaultBlocks.push({
+ state.defaultBlocks.push({
     tag: "div",
     // text: "Type '/' for commands",
     id: uuidv4(),
@@ -29,4 +30,5 @@ export const handleCreateBlock = (state) => {
   // node.setAttribute("placeholder", lastBlock.text);
   document.getElementById("editablePage").appendChild(node);
   node.focus();
+}
 };
