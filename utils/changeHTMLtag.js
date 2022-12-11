@@ -1,7 +1,7 @@
 import {keydownHandler} from './keydownHandler'
 
-export const changeHTMLTag = (node, tag) => {
-  const clone = document.createElement(tag);
+export const changeHTMLTag = (node, element) => {
+  const clone = document.createElement(element.tag);
   clone.addEventListener("keydown", keydownHandler);
   for (const attr of node.attributes) {
     console.log(attr,'attr');
@@ -13,7 +13,7 @@ export const changeHTMLTag = (node, tag) => {
     clone.appendChild(node.firstChild);
   }
   clone.innerHTML = ""
-  clone.setAttribute("placeholder", "Heading 1");
+  clone.setAttribute("placeholder",element.label);
   node.replaceWith(clone);
   const menu = document.getElementById("commandsMenu");
   menu.parentNode.removeChild(menu);

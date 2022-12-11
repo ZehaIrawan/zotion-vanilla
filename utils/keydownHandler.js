@@ -37,7 +37,7 @@ export const keydownHandler = (e, id,state) => {
   if (e.key === "Enter") {
     e.preventDefault();
     if( state.prevKey === "/"){
-      changeHTMLTag(currentElement,state.selectedCommand.tag)
+      changeHTMLTag(currentElement,state.selectedCommand)
     }else{
       handleCreateBlock(state);
     }
