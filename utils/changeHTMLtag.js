@@ -1,7 +1,6 @@
 import { keydownHandler } from "./keydownHandler";
 
 export const changeHTMLTag = (node, element, state) => {
-  console.log(state, "tag");
 
   const clone = document.createElement(element.tag);
 

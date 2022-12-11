@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from "uuid";
 import { keydownHandler } from "./keydownHandler";
 
 export const handleCreateBlock = (state) => {
-  console.log("create new block");
 
   if(state){
   const handleFocus = () => {

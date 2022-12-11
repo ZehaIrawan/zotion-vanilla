@@ -2,9 +2,6 @@ import { keydownHandler } from "./utils/keydownHandler";
 import { commandList } from './utils/commandList'
 
 export function commandsMenu(query,state) {
-
-  console.log(state,'state');
-
   state.filteredCommands =  query
       ? commandList.filter((item) => item.tag.includes(query))
       : commandList,
@@ -37,30 +34,35 @@ export function commandsMenu(query,state) {
     menu.parentNode.removeChild(menu);
   };
 
+  const noResult = () =>{
+    if(state.filteredCommands.length === 0) {
+     return(`<div class="command selected-command">
+              <span>No results</span>
+            </div>`);
+    }
+    return ''
+  }
+
+
   document.querySelector("#commandsMenu").innerHTML = `
     <div class="commands-container">
-    <h4>Add blocks</h4>
-    <span>Keep typing to filter, or escape to exit</span>
-    <br/>
-    <span>Filtering keyword ${query}</span>
-    <br/>
+      <h4>Add blocks</h4>
+      <span>Keep typing to filter, or escape to exit</span>
+      <br/>
+      <span>Filtering keyword ${query}</span>
+      <br/>
 
-    ${
-      state.filteredCommands.length === 0 &&
-      ` <div class="command selected-command">
-          <span>No results</span>
-        </div>`
-    }
+      ${noResult()}
 
-    ${state.filteredCommands.map((command) => {
-      const selectedId = state.selectedCommand.id;
-      return `<div id=${command.id} class="command ${
-        selectedId === command.id && "selected-command"
-      }">
-          <span>${command.label}</span>
-          <span>${command.shortcut}</span>
-        </div>`;
-    })}
+      ${state.filteredCommands.map((command) => {
+        const selectedId = state.selectedCommand.id
+        return (`<div id=${command.id} class="command ${
+          selectedId === command.id ? "selected-command" :""
+        }">
+            <span>${command.label}</span>
+            <span>${command.shortcut}</span>
+          </div>`)
+      }).join('')}
 
     </div>`;
 
