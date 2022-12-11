@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "npm i -dev && vite build",
     "preview": "vite preview",
-    "heroku-postbuild": "npm build",
+    "heroku-postbuild": "npm run build",
     "start": "vite --port $PORT"
   },
   "devDependencies": {
