@@ -60,10 +60,6 @@ export const keydownHandler = (e, id, state) => {
 
   if (e.key === "Backspace") {
     //  close command
-    // if (commandsMenu.classList.contains("show-commands")) {
-    //   commandsMenu.classList.remove("show-commands");
-    //   commandsMenu.classList.add("hide-commands");
-    // }
     // delete current block
   }
   if(e.key === "Escape"){
