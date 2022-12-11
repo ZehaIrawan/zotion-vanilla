@@ -12,7 +12,19 @@ export function editablePage() {
         id: uuidv4(),
       },
     ],
+    filteredCommands: [],
+    selectedCommand:''
   };
+
+    // commandsMenu.state = {
+    //   filteredCommands: query
+    //     ? commandList.filter((item) => item.tag.includes(query))
+    //     : commandList,
+    // };
+
+    // commandsMenu.selectedState = {
+    //   command: commandsMenu.state.filteredCommands[0],
+    // };
 
   // const handleBlur = (e) => {
   //    const currentElement = document.getElementById(document.activeElement.id);
