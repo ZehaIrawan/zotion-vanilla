@@ -45,12 +45,21 @@ export function commandsMenu(query,state) {
     <span>Filtering keyword ${query}</span>
     <br/>
 
+    ${
+      state.filteredCommands.length === 0 &&
+      ` <div class="command selected-command">
+          <span>No results</span>
+        </div>`
+    }
+
     ${state.filteredCommands.map((command) => {
-      const selectedId = state.selectedCommand.id
-      return `<div id=${command.id} class="command ${selectedId === command.id && 'selected-command'}">
+      const selectedId = state.selectedCommand.id;
+      return `<div id=${command.id} class="command ${
+        selectedId === command.id && "selected-command"
+      }">
           <span>${command.label}</span>
           <span>${command.shortcut}</span>
-        </div>`
+        </div>`;
     })}
 
     </div>`;
