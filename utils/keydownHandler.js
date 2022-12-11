@@ -59,7 +59,11 @@ export const keydownHandler = (e, id, state) => {
   }
 
   if (e.key === "Backspace") {
-    //  close command
+    if( state.prevKey === "/") {
+      const menu = document.getElementById("commandsMenu");
+      menu.parentNode.removeChild(menu);
+      state.prevKey = ""
+    }
     // delete current block
   }
   if (e.key === "Escape") {
