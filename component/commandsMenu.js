@@ -1,6 +1,6 @@
-import { keydownHandler } from "./utils/keydownHandler";
-import { commandList } from "./utils/commandList";
-import { changeHTMLTag } from "./utils/changeHTMLtag";
+import { keydownHandler } from "../utils/keydownHandler";
+import { commandList } from "../utils/commandList";
+import { changeHTMLTag } from "../utils/changeHTMLtag";
 
 export function commandsMenu(query, state) {
   state.filteredCommands = query
@@ -9,10 +9,11 @@ export function commandsMenu(query, state) {
 
   state.selectedCommand = state.filteredCommands[0];
 
-  // const handleClick = (e, clickedCommand) => {
-  //   const currentElement = document.getElementById(document.activeElement.id);
-  //   changeHTMLTag(currentElement, clickedCommand, state);
-  // };
+  const handleClick = (e, clickedCommand) => {
+    const currentElement = document.getElementById(document.activeElement.id);
+    state.prevKey = ""
+    changeHTMLTag(currentElement, clickedCommand, state);
+  };
 
   const noResult = () => {
     if (state.filteredCommands.length === 0) {
@@ -27,11 +28,10 @@ export function commandsMenu(query, state) {
     <div class="commands-container">
       <h4>Add blocks</h4>
       <span>Keep typing to filter, or escape to exit</span>
-
+   <br/>
       ${
         query
           ? `
-             <br/>
                 <span>Filtering keyword <span class="query">   ${query}</span></span>
            <br/>
       `
@@ -54,21 +54,21 @@ export function commandsMenu(query, state) {
         .join("")}
     </div>`;
 
-  // state.filteredCommands.forEach((commandOption) => {
-  //  const target =  document
-  //     .getElementById(commandOption.id)
+  state.filteredCommands.forEach((commandOption) => {
+   const target =  document
+      .getElementById(commandOption.id)
 
-  //     target.addEventListener("click", (e) =>
-  //       handleClick(
-  //         e,
-  //         commandList.filter((item) => item.id == commandOption.id)[0],
-  //       ),
-  //       )
+      target.addEventListener("click", (e) =>
+        handleClick(
+          e,
+          commandList.filter((item) => item.id == commandOption.id)[0],
+        ),
+        )
 
-  //       target.addEventListener("mousedown", (e) => {
-  //         e.preventDefault();
-  //         e.stopPropagation()
-  //       })
+        target.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          e.stopPropagation()
+        })
 
-  // });
+  });
 }

@@ -1,5 +1,5 @@
 import './style.css'
-import { editablePage } from './editablePage'
+import { editablePage } from './component/editablePage'
 import { navbar } from './component/navbar'
 import {decoration} from './component/decoration'
 

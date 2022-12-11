@@ -184,12 +184,23 @@ nav{
   align-items: center;
   margin-right: 1rem;
   cursor: pointer;
+  color: grey;
+}
+
+.editing span:first-of-type{
+  margin-right: 0.5rem;
+}
+
+.editing span:last-of-type{
+  margin-left: 2rem;
 }
 
 .publish{
+  color:#3565A9;
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-weight: 600;
 }
 
 /* decoration */
@@ -202,6 +213,11 @@ nav{
   width: 100%;
   justify-content: space-between;
   align-items: center;
+}
+
+.decoration span{
+  color: grey;
+  padding: 2px;
 }
 
 .decoration div{
@@ -237,4 +253,8 @@ nav{
   color:#fff;
   padding: 6px 8px;
   border-radius: 4px;
+}
+
+#cloud{
+  color:#43946C ;
 }

@@ -1,4 +1,4 @@
-import { commandsMenu } from "../commandsMenu";
+import { commandsMenu } from "../component/commandsMenu";
 import { handleCreateBlock } from "./handleCreateBlock";
 import { changeHTMLTag } from "./changeHTMLtag";
 

@@ -12,17 +12,19 @@ export const navbar = () => {
 
 <div class="right-nav">
 <div class="editing">
-      <span class="material-symbols-outlined">
-lock
+<span class="material-symbols-outlined">
+lock_open
 </span>
-    <div>Editing</div>
+    <span>Editing</span>
+    <span class="divider"></span>
 </div>
 
-<div class="publish">
 
-       <div>Publish Space</div>
+
+<div class="publish">
+       <span>Publish Space</span>
       <span class="material-symbols-outlined">
-expand_more
+      expand_more
 </span>
 </div>
 </div>

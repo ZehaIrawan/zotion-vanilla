@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { keydownHandler } from "./utils/keydownHandler";
+import { keydownHandler } from "../utils/keydownHandler";
 
 export function editablePage() {
   editablePage.state = {
